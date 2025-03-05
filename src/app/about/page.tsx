@@ -1,4 +1,4 @@
-// Move this file to src/app/page.tsx
+// Move this file to src/app/page.tsx.
 'use client'
 
 import Image from 'next/image'
