@@ -3,8 +3,12 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export default function About() {
+  // Add state for randomized images
+  const [randomizedImages, setRandomizedImages] = useState<string[]>([])
+
   // Animation variants
   const container = {
     hidden: { opacity: 0 },
@@ -44,6 +48,7 @@ export default function About() {
   useEffect(() => {
     // Articles will start loading automatically through the ArticlesContext
     // We just need to access the context to trigger the fetch
+    console.log('Page loaded')
   }, [])
 
   return (
@@ -62,12 +67,7 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          {[
-            '/images/city-night.jpg',
-            '/images/hot-air-balloons.jpg',
-            '/images/night-street.jpg',
-            '/images/ocean-night.jpg'
-          ].map((src, index) => (
+          {randomizedImages.length > 0 ? randomizedImages.map((src, index) => (
             <motion.div
               key={index}
               className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden relative shadow-md"
@@ -75,10 +75,29 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="w-full h-full bg-gray-200 rounded-xl" />
-              {/* Images would be loaded here in a real implementation */}
+              <Image
+                src={src}
+                alt={`Lifestyle image ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 25vw"
+                className="object-cover"
+                priority={index < 2}
+              />
             </motion.div>
-          ))}
+          )) : (
+            // Fallback while images are loading
+            [1, 2, 3, 4].map((_, index) => (
+              <motion.div
+                key={index}
+                className="aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden relative shadow-md"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="w-full h-full bg-gray-200 rounded-xl" />
+              </motion.div>
+            ))
+          )}
         </div>
 
         <motion.div
