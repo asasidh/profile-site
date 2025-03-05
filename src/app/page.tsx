@@ -20,6 +20,31 @@ export default function About() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   }
+  
+  // Randomize images on component mount
+  useEffect(() => {
+    const images = [
+      '/light-house.jpg',
+      '/butterfly.jpg',
+      '/swan.jpg',
+      '/lizard.jpg'
+    ]
+    
+    // Fisher-Yates shuffle algorithm
+    const shuffled = [...images]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    
+    setRandomizedImages(shuffled)
+  }, [])
+
+  // Add prefetch effect
+  useEffect(() => {
+    // Articles will start loading automatically through the ArticlesContext
+    // We just need to access the context to trigger the fetch
+  }, [])
 
   return (
     <div className="max-w-6xl mx-auto">

@@ -6,9 +6,9 @@ import Sidebar from '@/components/Sidebar'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Arun Sasidharan - Digital Leadership Portfolio',
+  title: 'Arun Sasidharan - GenAI Leader and Vibe Coder',
   description: 'Digital transformation leader with 20 years of experience in M&A, strategic partnerships, and global operations.',
-  keywords: 'digital transformation, M&A, strategic partnerships, global operations, leadership, interactive agency, digital services'
+  keywords: 'AI, GenAI, Business Leader, digital transformation, M&A, strategic partnerships, global operations, leadership, interactive agency, digital services'
 }
 
 // Update your layout file to include the ArticlesProvider

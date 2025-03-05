@@ -36,7 +36,8 @@ const Sidebar = () => {
         />
         <div>
           <h2 className="font-semibold text-primary">Arun Sasidharan</h2>
-          <p className="text-sm text-secondary">Vibe Coder and Business Leader</p>
+          <p className="text-sm text-secondary">AI Enthusiast</p>
+          <p className="text-sm text-secondary">Vibe Coder</p>
         </div>
       </div>
 
