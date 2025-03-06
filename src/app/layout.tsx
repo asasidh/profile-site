@@ -24,9 +24,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <ArticlesProvider>
           <Sidebar />
-          <main className="ml-[280px] p-8">
+          
+          <div className="pl-[60px] md:pl-[280px] min-h-screen">
             {children}
-          </main>
+          </div>
         </ArticlesProvider>
       </body>
     </html>
